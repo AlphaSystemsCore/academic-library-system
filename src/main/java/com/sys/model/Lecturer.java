@@ -2,7 +2,6 @@ package com.sys.model;
 
 
 public class Lecturer extends Person {
-    private int lecturerId;
     private String staffNumber;     
     private String title;           
     private int departmentId;
@@ -27,9 +26,7 @@ public class Lecturer extends Person {
     }
 
 
-    public int getLecturerId(){
-        return lecturerId; 
-    }
+   
     public String getStaffNumber(){
         return staffNumber; 
     }
@@ -40,9 +37,7 @@ public class Lecturer extends Person {
         return departmentId; 
     }
 
-    public void setLecturerId(int lecturerId){ 
-        this.lecturerId = lecturerId; 
-    }
+    p
     public void setTitle(String title){ 
         this.title = title; 
     }
