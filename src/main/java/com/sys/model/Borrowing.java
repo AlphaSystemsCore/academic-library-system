@@ -10,7 +10,6 @@ import java.time.LocalDate;
  
 
 public class Borrowing {
-    private int borrowingId;
     private int studentId;
     private int bookId;
     private int librarianId;
@@ -32,9 +31,9 @@ public class Borrowing {
         BORROWED, RETURNED, OVERDUE
     }
 
-    public Borrowing(int borrowingId, int studentId, int bookId,
+    public Borrowing( int studentId, int bookId,
                      int librarianId, LocalDate borrowDate) {
-        this.borrowingId = borrowingId;
+        
         this.studentId = studentId;
         this.bookId = bookId;
         this.librarianId = librarianId;
@@ -45,10 +44,6 @@ public class Borrowing {
     }
 
     
-    public Borrowing(int studentId, int bookId, int librarianId) {
-        this(0, studentId, bookId, librarianId, LocalDate.now());
-    }
-
     public void returnBook() {
         this.returnDate = LocalDate.now();
         this.status = StatusEnum.RETURNED;
@@ -67,9 +62,7 @@ public class Borrowing {
         //implemented soon
     }
 
-    public int getBorrowingId() {
-         return borrowingId; 
-        }
+    
     public int getStudentId() {
          return studentId; 
         }
@@ -93,9 +86,7 @@ public class Borrowing {
          return status; 
     }
 
-    public void setBorrowingId(int id){
-        this.borrowingId = id; 
-    }
+    
     public void setStatus(StatusEnum status){
          this.status = status; 
     }

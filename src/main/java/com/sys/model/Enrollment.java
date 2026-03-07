@@ -21,11 +21,11 @@ public class Enrollment {
     private boolean isActive;
     private LocalDate enrolledDate;
 
-    // 🔍🔍Optional: populated by JOIN queries for display 🔍🔍
-    private String studentName;
-    private String admissionNumber;
-    private String courseTitle;
-    private String courseCode;
+    // // 🔍🔍Optional: populated by JOIN queries for display 🔍🔍
+    // private String studentName;
+    // private String admissionNumber;
+    // private String courseTitle;
+    // private String courseCode;
 
     public enum StatusEnum {
         NORMAL, RETAKE, EXAM_SPECIAL, DROPPED, COMPLETED
@@ -48,15 +48,6 @@ public class Enrollment {
         this.status = resolveStatus(attemptNumber);
     }
 
-    // Constructor without ID — used before saving to DB
-    public Enrollment(int studentId, int offeringId, int attemptNumber) {
-        this(0, studentId, offeringId, attemptNumber, LocalDate.now());
-    }
-
-    // First-time enrollment (attempt = 1)
-    public Enrollment(int studentId, int offeringId) {
-        this(studentId, offeringId, 1);
-    }
 
     private StatusEnum resolveStatus(int attempt) {
         if (attempt >= 3) return StatusEnum.EXAM_SPECIAL;
@@ -109,32 +100,32 @@ public class Enrollment {
         this.isCountedInGpa = false;
     }
 
-    // Display fields — set by service layer when doing JOIN queries🔍🔍
-    public String getStudentName() {
-        return studentName; 
-    }
-    public String getAdmissionNumber(){ 
-        return admissionNumber; 
-    }
-    public String getCourseTitle() { 
-        return courseTitle; 
-    }
-    public String getCourseCode()  {
-         return courseCode; 
-        }
+    // // Display fields — set by service layer when doing JOIN queries🔍🔍
+    // public String getStudentName() {
+    //     return studentName; 
+    // }
+    // public String getAdmissionNumber(){ 
+    //     return admissionNumber; 
+    // }
+    // public String getCourseTitle() { 
+    //     return courseTitle; 
+    // }
+    // public String getCourseCode()  {
+    //      return courseCode; 
+    //     }
 
-    public void setStudentName(String studentName) { 
-        this.studentName = studentName;
-     }
-    public void setAdmissionNumber(String admissionNumber){ 
-        this.admissionNumber = admissionNumber; 
-    }
-    public void setCourseTitle(String courseTitle){ 
-        this.courseTitle = courseTitle; 
-    }
-    public void setCourseCode(String courseCode) {
-         this.courseCode = courseCode; 
-        }
+    // public void setStudentName(String studentName) { 
+    //     this.studentName = studentName;
+    //  }
+    // public void setAdmissionNumber(String admissionNumber){ 
+    //     this.admissionNumber = admissionNumber; 
+    // }
+    // public void setCourseTitle(String courseTitle){ 
+    //     this.courseTitle = courseTitle; 
+    // }
+    // public void setCourseCode(String courseCode) {
+    //      this.courseCode = courseCode; 
+    //     }
 
    
     

@@ -37,7 +37,9 @@ public class Book {
         this(0, isbn, title, author, publisher, publishedYear, category, totalCopies, totalCopies);
     }
 
-    public boolean isAvailable() { return availableCopies > 0; }
+    public boolean isAvailable() { 
+        return availableCopies > 0; 
+    }
 
     public void borrowCopy() {
         if (availableCopies <= 0)

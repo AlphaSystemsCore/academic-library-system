@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 
 public class Fine {
-    private int fineId;
     private int borrowingId;
     private int studentId;
     private float amount;
@@ -16,28 +15,22 @@ public class Fine {
     // private String studentName;
     // private String bookTitle;
 
-    public Fine(int fineId, int borrowingId, int studentId,
-                float amount, LocalDate createdDate) {
-        this.fineId = fineId;
+    public Fine(int borrowingId, int studentId,
+                float amount) {
         this.borrowingId = borrowingId;
         this.studentId = studentId;
         this.amount = amount;
         this.isPaid = false;
-        this.createdDate = createdDate;
+        this.createdDate = createdDate.now();
         this.paidDate = null;
     }
-    public Fine(int borrowingId, int studentId, float amount) {
-        this(0, borrowingId, studentId, amount, LocalDate.now());
-    }
-
+  
     public void markAsPaid() {
         this.isPaid = true;
         this.paidDate = LocalDate.now();
     }
 
-    public int getFineId(){ 
-        return fineId; 
-    }
+    
     public int getBorrowingId(){ 
         return borrowingId; 
     }
@@ -57,9 +50,7 @@ public class Fine {
         return paidDate; 
     }
 
-    public void setFineId(int fineId){ 
-        this.fineId = fineId; 
-    }
+ 
     public void setAmount(float amount){ 
         this.amount = amount; 
     }

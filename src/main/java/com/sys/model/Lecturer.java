@@ -30,17 +30,15 @@ public class Lecturer extends Person {
     public String getStaffNumber(){
         return staffNumber; 
     }
+
     public String getTitle(){ 
         return title; 
     }
-    public int getDepartmentId(){ 
-        return departmentId; 
-    }
 
-    p
     public void setTitle(String title){ 
         this.title = title; 
     }
+    
     public void setDepartmentId(int deptId){ 
         this.departmentId = deptId; 
     }

@@ -94,7 +94,6 @@ public class Table {
                     password            VARCHAR(255),
                     programme_id        INT,
                     admission_number    VARCHAR(30) UNIQUE,
-                    registration_number VARCHAR(30) UNIQUE,
                     role_id             INT,
                     registered_date     DATE,
                     FOREIGN KEY (programme_id) REFERENCES programmes(programme_id),
@@ -124,6 +123,7 @@ public class Table {
                     grade_point   FLOAT,
                     academic_year YEAR,
                     submitted_by  INT,
+                    submitted_date Date,
                     FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id),
                     FOREIGN KEY (submitted_by)  REFERENCES lecturers(lecturer_id)
                 );
@@ -148,6 +148,8 @@ public class Table {
                     password     VARCHAR(255),
                     staff_number VARCHAR(20) UNIQUE,
                     role_id      INT,
+                    identification_number VARCHAR(19) UNIQUE,
+                    phone_number VARCHAR(19) UNIQUE
                     FOREIGN KEY (role_id) REFERENCES roles(role_id)
                 );
 

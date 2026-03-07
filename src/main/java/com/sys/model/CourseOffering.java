@@ -7,13 +7,12 @@ package com.sys.model;
  * Lecturers see their students through their offerings.
  *  */
 public class CourseOffering {
-    private int offeringId;
     private int courseId;
     private int lecturerId;
     private int semesterId;
     private int programmeId;
 
-    // 🔍🔍Optional: populated by JOIN queries for display purposes
+    //  populated by JOIN queries for display purposes
     private String courseTitle;
     private String courseCode;
     private String lecturerName;
@@ -21,26 +20,21 @@ public class CourseOffering {
     private int enrolledStudentsCount;
 
     public CourseOffering(
-        int offeringId,
         int courseId,
         int lecturerId,
         int semesterId,
         int programmeId
     ) {
-        this.offeringId = offeringId;
+        
         this.courseId = courseId;
         this.lecturerId = lecturerId;
         this.semesterId = semesterId;
         this.programmeId = programmeId;
     }
 
-    public CourseOffering(int courseId, int lecturerId, int semesterId, int programmeId) {
-        this(0, courseId, lecturerId, semesterId, programmeId);
-    }
+    
 
-    public int getOfferingId() { 
-        return offeringId;
-    }
+    
     public int getCourseId() {
          return courseId;
     }
@@ -55,9 +49,6 @@ public class CourseOffering {
         return programmeId; 
     }
 
-    public void setOfferingId(int offeringId){ 
-        this.offeringId = offeringId; 
-    }
     public void setCourseId(int courseId){ 
         this.courseId = courseId; 
     }

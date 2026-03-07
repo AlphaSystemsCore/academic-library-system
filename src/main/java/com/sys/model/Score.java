@@ -25,10 +25,10 @@ public class Score {
     private int submittedBy;        
     private LocalDate submittedDate;
 
-    // populated by JOIN
-    private String studentName;
-    private String admissionNumber;
-    private String courseTitle;
+    // // populated by JOIN
+    // private String studentName;
+    // private String admissionNumber;
+    // private String courseTitle;
 
     public Score(
         int scoreId,
@@ -128,25 +128,25 @@ public class Score {
     }
 
     
-    public String getStudentName(){ 
-        return studentName; 
-    }
-    public String getAdmissionNumber(){ 
-        return admissionNumber; 
-    }
-    public String getCourseTitle(){ 
-        return courseTitle; 
-    }
+    // public String getStudentName(){ 
+    //     return studentName; 
+    // }
+    // public String getAdmissionNumber(){ 
+    //     return admissionNumber; 
+    // }
+    // public String getCourseTitle(){ 
+    //     return courseTitle; 
+    // }
 
-    public void setStudentName(String name){ 
-        this.studentName = name; 
-    }
-    public void setAdmissionNumber(String number){ 
-        this.admissionNumber = number; 
-    }
-    public void setCourseTitle(String title) { 
-        this.courseTitle = title; 
-    }
+    // public void setStudentName(String name){ 
+    //     this.studentName = name; 
+    // }
+    // public void setAdmissionNumber(String number){ 
+    //     this.admissionNumber = number; 
+    // }
+    // public void setCourseTitle(String title) { 
+    //     this.courseTitle = title; 
+    // }
 
     
 }
