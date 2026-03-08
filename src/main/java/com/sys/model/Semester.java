@@ -50,7 +50,7 @@ public class Semester {
     public LocalDate getEndDate(){ 
         return endDate; 
     }
-    public boolean isCurrent(){ 
+    public boolean getCurrent(){ 
         return isCurrent; 
     }
 

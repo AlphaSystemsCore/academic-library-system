@@ -37,6 +37,8 @@ public class Table {
                 //     is_current      BOOLEAN DEFAULT FALSE
                 // );
 
+
+                
                 // CREATE TABLE IF NOT EXISTS courses (
                 //     course_id    INT PRIMARY KEY AUTO_INCREMENT,
                 //     course_code  VARCHAR(20) UNIQUE,
