@@ -55,7 +55,7 @@ public class Table {
                 //     phone_number VARCHAR(14) UNIQUE,
                 //     role_id    INT,
                 //     password   VARCHAR(255),
-                //     adminNumber VARCHAR(12) UNIQUE
+                //     adminNumber VARCHAR(12) UNIQUE,
                     
                 //     FOREIGN KEY (role_id) REFERENCES roles(role_id)
                 // );
@@ -123,7 +123,7 @@ public class Table {
                 //     cat_score     FLOAT,
                 //     exam_score    FLOAT,
                 //     total_score   FLOAT,
-                //     letter_grade  VARCHAR(5),
+                //     letter_grade  VARCHAR(1),
                 //     grade_point   FLOAT,
                 //     academic_year YEAR,
                 //     submitted_by  INT,
@@ -153,7 +153,7 @@ public class Table {
                 //     staff_number VARCHAR(20) UNIQUE,
                 //     role_id      INT,
                 //     identification_number VARCHAR(19) UNIQUE,
-                //     phone_number VARCHAR(19) UNIQUE
+                //     phone_number VARCHAR(19) UNIQUE,
                 //     FOREIGN KEY (role_id) REFERENCES roles(role_id)
                 // );
 
