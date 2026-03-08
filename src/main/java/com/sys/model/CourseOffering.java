@@ -2,11 +2,14 @@ package com.sys.model;
 
 /** * specific semester by a specific lecturer.
  * GLUE
+ * 
+ * 
  * One offering = one course + one lecturer + one semester + one programme
  * Students enroll into offerings.
  * Lecturers see their students through their offerings.
  *  */
 public class CourseOffering {
+    private int offeringId;
     private int courseId;
     private int lecturerId;
     private int semesterId;
@@ -19,13 +22,10 @@ public class CourseOffering {
     private int creditHours;
     private int enrolledStudentsCount;
 
-    public CourseOffering(
-        int courseId,
-        int lecturerId,
-        int semesterId,
-        int programmeId
-    ) {
-        
+   
+    public CourseOffering(int courseId, int lecturerId,
+                          int semesterId, int programmeId) {
+        this.offeringId = 0;
         this.courseId = courseId;
         this.lecturerId = lecturerId;
         this.semesterId = semesterId;
@@ -33,32 +33,52 @@ public class CourseOffering {
     }
 
     
+    public CourseOffering(int offeringId, int courseId, int lecturerId,
+                          int semesterId, int programmeId) {
+        this.offeringId = offeringId;
+        this.courseId = courseId;
+        this.lecturerId = lecturerId;
+        this.semesterId = semesterId;
+        this.programmeId = programmeId;
+    }
 
-    
-    public int getCourseId() {
-         return courseId;
+    public int getOfferingId(){ 
+        return offeringId; 
     }
+    
+    public int getCourseId(){ 
+        return courseId; 
+    }
+
     public int getLecturerId(){ 
-        return lecturerId;
-    
+        return lecturerId; 
     }
+
     public int getSemesterId(){ 
         return semesterId; 
     }
+
     public int getProgrammeId(){ 
         return programmeId; 
+    }
+
+    public void setOfferingId(int offeringId){ 
+        this.offeringId = offeringId; 
     }
 
     public void setCourseId(int courseId){ 
         this.courseId = courseId; 
     }
+
     public void setLecturerId(int lecturerId){ 
         this.lecturerId = lecturerId; 
     }
+
     public void setSemesterId(int semesterId){ 
         this.semesterId = semesterId; 
     }
-    public void setProgrammeId(int programmeId) { 
+
+    public void setProgrammeId(int programmeId){ 
         this.programmeId = programmeId; 
     }
 
@@ -66,15 +86,19 @@ public class CourseOffering {
     public String getCourseTitle(){ 
         return courseTitle; 
     }
+
     public String getCourseCode(){ 
         return courseCode; 
     }
-    public String getLecturerName(){ 
-        return lecturerName; 
+
+    public String getLecturerName(){
+         return lecturerName; 
     }
+
     public int getCreditHours(){ 
         return creditHours; 
     }
+
     public int getEnrolledStudentsCount(){ 
         return enrolledStudentsCount; 
     }
@@ -82,18 +106,20 @@ public class CourseOffering {
     public void setCourseTitle(String courseTitle){ 
         this.courseTitle = courseTitle; 
     }
-    public void setCourseCode(String courseCode){ 
-        this.courseCode = courseCode; 
+
+    public void setCourseCode(String courseCode){
+         this.courseCode = courseCode; 
     }
+
     public void setLecturerName(String lecturerName){ 
         this.lecturerName = lecturerName; 
     }
+
     public void setCreditHours(int creditHours){ 
         this.creditHours = creditHours; 
     }
+
     public void setEnrolledStudentsCount(int count){ 
         this.enrolledStudentsCount = count; 
     }
-
-    
 }

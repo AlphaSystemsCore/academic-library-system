@@ -2,8 +2,8 @@ package com.sys.model;
 
 import java.time.LocalDate;
 
-
 public class Fine {
+    private int fineId;
     private int borrowingId;
     private int studentId;
     private float amount;
@@ -11,61 +11,86 @@ public class Fine {
     private LocalDate createdDate;
     private LocalDate paidDate;
 
-    // //
-    // private String studentName;
-    // private String bookTitle;
+    private String studentName;
+    private String bookTitle;
 
-    public Fine(int borrowingId, int studentId,
-                float amount) {
+    
+    public Fine(int borrowingId, int studentId, float amount) {
+        this.fineId = 0;
         this.borrowingId = borrowingId;
         this.studentId = studentId;
         this.amount = amount;
         this.isPaid = false;
-        this.createdDate = createdDate.now();
+        this.createdDate = LocalDate.now();     
         this.paidDate = null;
     }
-  
+
+    
+    public Fine(int fineId, int borrowingId, int studentId,
+                float amount, LocalDate createdDate) {
+        this.fineId = fineId;
+        this.borrowingId = borrowingId;
+        this.studentId = studentId;
+        this.amount = amount;
+        this.isPaid = false;
+        this.createdDate = createdDate;
+        this.paidDate = null;
+    }
+
     public void markAsPaid() {
         this.isPaid = true;
         this.paidDate = LocalDate.now();
     }
 
+    public int getFineId(){ 
+        return fineId; 
+    }
     
     public int getBorrowingId(){ 
         return borrowingId; 
     }
+
     public int getStudentId(){ 
         return studentId; 
     }
-    public float getAmount(){
-         return amount; 
-        }
+
+    public float getAmount(){ 
+        return amount; 
+    }
+
     public boolean isPaid(){ 
         return isPaid; 
     }
+
     public LocalDate getCreatedDate(){ 
         return createdDate; 
     }
-    public LocalDate getPaidDate()  { 
+
+    public LocalDate getPaidDate() { 
         return paidDate; 
     }
 
- 
+    public void setFineId(int fineId){ 
+        this.fineId = fineId; 
+    }
+    
     public void setAmount(float amount){ 
         this.amount = amount; 
     }
-    // public String getStudentName(){ 
-    //     return studentName; 
-    // }
-    // public String getBookTitle(){
-    //      return bookTitle; 
-    // }
-    // public void setStudentName(String name){ 
-    //     this.studentName = name; 
-    // }
-    // public void setBookTitle(String title){ 
-    //     this.bookTitle = title; 
-    // }
 
-    
+    public String getStudentName(){ 
+        return studentName; 
+    }
+
+    public String getBookTitle(){ 
+        return bookTitle; 
+    }
+
+    public void setStudentName(String name){ 
+        this.studentName = name; 
+    }
+
+    public void setBookTitle(String title){ 
+        this.bookTitle = title; 
+    }
 }

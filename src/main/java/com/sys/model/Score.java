@@ -11,34 +11,28 @@ import java.time.LocalDate;
  *   40-49 = D (1.0)
  *   <40   = F (0.0)
  *
- *            
  */
 public class Score {
     private int scoreId;
     private int enrollmentId;
-    private float catScore;        
-    private float examScore;    
-    private float totalScore;      
-    private char letterGrade;      
-    private float gradePoint;      
+    private float catScore;
+    private float examScore;
+    private float totalScore;
+    private char letterGrade;
+    private float gradePoint;
     private int academicYear;
-    private int submittedBy;        
+    private int submittedBy;
     private LocalDate submittedDate;
 
-    // // populated by JOIN
-    // private String studentName;
-    // private String admissionNumber;
-    // private String courseTitle;
+    // populated by JOIN
+    private String studentName;
+    private String admissionNumber;
+    private String courseTitle;
 
-    public Score(
-        int scoreId,
-        int enrollmentId,
-        float catScore,
-        float examScore,
-        int academicYear,
-        int submittedBy
-    ) {
-        this.scoreId = scoreId;
+   
+    public Score(int enrollmentId, float catScore, float examScore,
+                 int academicYear, int submittedBy) {
+        this.scoreId = 0;
         this.enrollmentId = enrollmentId;
         this.academicYear = academicYear;
         this.submittedBy = submittedBy;
@@ -46,10 +40,16 @@ public class Score {
         setScores(catScore, examScore);
     }
 
-    public Score(int enrollmentId, float catScore, float examScore, int academicYear, int submittedBy) {
-        this(0, enrollmentId, catScore, examScore, academicYear, submittedBy);
+   
+    public Score(int scoreId, int enrollmentId, float catScore, float examScore,
+                 int academicYear, int submittedBy) {
+        this.scoreId = scoreId;
+        this.enrollmentId = enrollmentId;
+        this.academicYear = academicYear;
+        this.submittedBy = submittedBy;
+        this.submittedDate = LocalDate.now();
+        setScores(catScore, examScore);
     }
-
 
     public void setScores(float catScore, float examScore) {
         if (catScore < 0 || catScore > 30)
@@ -64,89 +64,95 @@ public class Score {
     }
 
     private void calculateGrade() {
-        if (totalScore >= 70) { 
-            letterGrade = 'A'; 
-            gradePoint = 4.0f; 
+        if (totalScore >= 70){
+            letterGrade = 'A'; gradePoint = 4.0f; 
         }
-        else if (totalScore >= 60) { 
-            letterGrade = 'B'; 
-            gradePoint = 3.0f; 
+        else if (totalScore >= 60){ 
+            letterGrade = 'B'; gradePoint = 3.0f; 
         }
-        else if (totalScore >= 50) { 
-            letterGrade = 'C'; 
-            gradePoint = 2.0f; 
+        else if (totalScore >= 50){ 
+            letterGrade = 'C'; gradePoint = 2.0f; 
         }
         else if (totalScore >= 40){ 
-            letterGrade = 'D'; 
-            gradePoint = 1.0f; 
-        }else{ 
+            letterGrade = 'D'; gradePoint = 1.0f; 
+        }
+        else{ 
             letterGrade = 'F'; gradePoint = 0.0f; 
         }
     }
 
-    public boolean isPassing() 
-    { 
+    public boolean isPassing(){ 
         return totalScore >= 40; 
     }
 
-    public int getScoreId(){ 
+    public int getScoreId() { 
         return scoreId; 
     }
-    public int getEnrollmentId(){
+
+    public int getEnrollmentId() { 
         return enrollmentId; 
     }
-    public float getCatScore(){ 
+
+    public float getCatScore()  { 
         return catScore; 
     }
-    public float getExamScore(){ 
+
+    public float getExamScore() { 
         return examScore; 
     }
-    public float getTotalScore()    { 
+
+    public float getTotalScore()   { 
         return totalScore; 
     }
-    public char getLetterGrade(){ 
+
+    public char getLetterGrade()  { 
         return letterGrade; 
     }
-    public float getGradePoint(){ 
+
+    public float getGradePoint() { 
         return gradePoint; 
     }
-    public int getAcademicYear(){
-         return academicYear; 
-        }
-    public int getSubmittedBy(){ 
+
+    public int getAcademicYear() { 
+        return academicYear; 
+    }
+
+    public int getSubmittedBy() { 
         return submittedBy; 
     }
-    public LocalDate getSubmittedDate() { 
+
+    public LocalDate getSubmittedDate(){ 
         return submittedDate; 
     }
 
-    public void setScoreId(int scoreId){ 
+    public void setScoreId(int scoreId) { 
         this.scoreId = scoreId; 
     }
-    public void setSubmittedDate(LocalDate date){ 
+
+    public void setSubmittedDate(LocalDate date)    { 
         this.submittedDate = date; 
     }
 
-    
-    // public String getStudentName(){ 
-    //     return studentName; 
-    // }
-    // public String getAdmissionNumber(){ 
-    //     return admissionNumber; 
-    // }
-    // public String getCourseTitle(){ 
-    //     return courseTitle; 
-    // }
+    public String getStudentName(){ 
+        return studentName; 
+    }
+    public String getAdmissionNumber(){ 
+        return admissionNumber; 
+    }
+    public String getCourseTitle(){ 
+        return courseTitle; 
+    }
 
-    // public void setStudentName(String name){ 
-    //     this.studentName = name; 
-    // }
-    // public void setAdmissionNumber(String number){ 
-    //     this.admissionNumber = number; 
-    // }
-    // public void setCourseTitle(String title) { 
-    //     this.courseTitle = title; 
-    // }
+    public void setStudentName(String name){ 
+        this.studentName = name; 
+    }
 
+    public void setAdmissionNumber(String number){ 
+        this.admissionNumber = number; 
+    }
+
+    public void setCourseTitle(String title) { 
+        this.courseTitle = title; 
+    }
     
 }

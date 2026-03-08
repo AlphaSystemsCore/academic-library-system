@@ -30,13 +30,15 @@ public class DepartmentDao {
             Statement cursor = conn.createStatement();
             ResultSet rs = cursor.executeQuery(sql)){
                 while(rs.next()){
-                   Department dept = new Department(rs.getString(2), rs.getString(3) );
+                   Department dept = new Department(rs.getInt("department_id"),rs.getString("name"), rs.getString("description") );
                    departments.add(dept);
                 }
+                return departments; 
         } catch (SQLException e) {
             System.out.println("Error fetching departments: " + e.getMessage());
+            return new ArrayList<>();
         }
-        return departments;    
+           
     }
     public Department findByIdDepartment(int department_id){
         String sql = "SELECT * FROM departments WHERE department_id = ?";
@@ -45,7 +47,7 @@ public class DepartmentDao {
                 cursor.setInt(1, department_id);
                 ResultSet rs = cursor.executeQuery();
                 if(rs.next()){
-                    Department dept = new Department(rs.getString(1), rs.getString(2));
+                    Department dept = new Department(rs.getInt("department_id"), rs.getString(1), rs.getString(2));
                     return dept;
                 }
             
@@ -113,12 +115,12 @@ public class DepartmentDao {
             }
     }
 
-    private Department mapRow(ResultSet rs) throws SQLException {
-        return new Department(
-            rs.getString("name"),
-            rs.getString("description")
-        );
-    }
+    // private Department mapRow(ResultSet rs) throws SQLException {
+    //     return new Department(
+    //         rs.getString("name"),
+    //         rs.getString("description")
+    //     );
+    // }
 
     
     
