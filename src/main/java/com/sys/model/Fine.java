@@ -27,7 +27,7 @@ public class Fine {
 
     
     public Fine(int fineId, int borrowingId, int studentId,
-                float amount, LocalDate createdDate) {
+                float amount, boolean is_paid, LocalDate createdDate) {
         this.fineId = fineId;
         this.borrowingId = borrowingId;
         this.studentId = studentId;
@@ -93,4 +93,7 @@ public class Fine {
     public void setBookTitle(String title){ 
         this.bookTitle = title; 
     }
+    public void setPaidDate(LocalDate paidDate) {
+    this.paidDate = paidDate;
+}
 }

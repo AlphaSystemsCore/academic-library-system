@@ -1,7 +1,4 @@
-package com.sys.dao;
-import com.sys.utilities.Table;
-
-import com.sys.utilities.DatabaseConnection;
+package com.sys.utilities;
 import java.sql.Connection;
 import java.sql.Statement;
 
