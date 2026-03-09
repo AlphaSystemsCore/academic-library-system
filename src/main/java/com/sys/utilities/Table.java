@@ -182,12 +182,13 @@ public class Table {
 
                 CREATE TABLE IF NOT EXISTS reservations (
                     reservation_id  INT PRIMARY KEY AUTO_INCREMENT,
-                    student_id      INT,
-                    book_id         INT,
-                    reserved_date   DATE,
+                    student_id      INT NOT NULL,
+                    book_id         INT NOT NULL,
+                    reserved_date   DATE NOT NULL,
                     status          VARCHAR(20) DEFAULT 'PENDING',
                     FOREIGN KEY (student_id) REFERENCES students(student_id),
                     FOREIGN KEY (book_id)    REFERENCES books(book_id)
+                );
 );
                 """;
               
