@@ -54,11 +54,11 @@ public class FineDao {
                     rs.getInt("student_id"),
                     rs.getFloat("amount"),
                     rs.getBoolean("is_paid"),
-                    rs.getDate("created_date").toLocalDate()  // ← no trailing comma
+                    rs.getDate("created_date").toLocalDate()  // no trailing comma
                 );
                 Date paidDate = rs.getDate("paid_date");
                 if (paidDate != null) {
-                    fine.setPaidDate(paidDate.toLocalDate()); // ← fixed capital P
+                    fine.setPaidDate(paidDate.toLocalDate()); //fixed capital P
                 }
                 fines.add(fine);
             }

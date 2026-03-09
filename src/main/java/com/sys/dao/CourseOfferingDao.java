@@ -106,7 +106,7 @@ public class CourseOfferingDao {
     }
 
     // Get all offerings assigned to a specific lecturer in a semester
-    // This is what lecturers see when they log in
+    // This is what lecturers see when they log in(I will give it a service later)
     public List<CourseOffering> findOfferingsByLecturer(int lecturerId, int semesterId) {
         List<CourseOffering> offerings = new ArrayList<>();
         String sql = "SELECT co.offering_id, co.course_id, co.lecturer_id, " +

@@ -20,7 +20,7 @@ public class pattern {
     // public boolean nameExistsDepartment(String name){
 
     // }
-    // public boolean idExistsDeapartment(int department_id){
+    // public boolean idExistsDepartment(int department_id){
 
     // }
     

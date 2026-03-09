@@ -165,7 +165,7 @@ public class BorrowingDao {
         }
     }
 
-    // Mark all overdue borrowings — run daily or on login
+    // Mark all overdue borrowings — run daily but I will put it on login
     public boolean markOverdueBorrowings() {
         String sql = "UPDATE borrowings SET status = 'OVERDUE' " +
                      "WHERE status = 'BORROWED' AND due_date < CURDATE()";
@@ -226,7 +226,7 @@ public class BorrowingDao {
         );
         // Override status from DB
         borrowing.setStatus(StatusEnum.valueOf(rs.getString("status")));
-        // return_date may be null if not yet returned
+        // Exclusion of returned date ,,,we give it null return_date may be null if not yet returned
         Date returnDate = rs.getDate("return_date");
         if (returnDate != null) {
             borrowing.setReturnDate(returnDate.toLocalDate());

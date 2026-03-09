@@ -9,7 +9,7 @@ import com.sys.model.Semester;
 
 public class SemesterDao {
 
-    public boolean saveSemester(Semester semester) {
+    public boolean isSaveSemester(Semester semester) {
         String sql = "INSERT INTO semesters (academic_year, semester_number, start_date, end_date, is_current) " +
                      "VALUES (?, ?, ?, ?, ?)";
 
@@ -93,7 +93,7 @@ public class SemesterDao {
         return null;
     }
 
-    public boolean updateSemester(Semester semester) {
+    public boolean isUpdateSemester(Semester semester) {
         String sql = "UPDATE semesters SET academic_year = ?, semester_number = ?, " +
                      "start_date = ?, end_date = ?, is_current = ? " +
                      "WHERE semester_id = ?";
@@ -118,7 +118,7 @@ public class SemesterDao {
     }
 
     
-    public boolean setCurrentSemester(int semesterId) {
+    public boolean isSetCurrentSemester(int semesterId) {
         String resetSql = "UPDATE semesters SET is_current = FALSE";
     
         String activateSql = "UPDATE semesters SET is_current = TRUE WHERE semester_id = ?";
@@ -148,7 +148,7 @@ public class SemesterDao {
         }
     }
 
-    public boolean deleteSemester(int semesterId) {
+    public boolean isDeleteSemester(int semesterId) {
         String sql = "DELETE FROM semesters WHERE semester_id = ?";
 
         try (Connection conn = DatabaseConnection.createConnection();

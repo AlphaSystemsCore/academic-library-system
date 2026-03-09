@@ -18,8 +18,7 @@ public class DepartmentDao {
                 int rows = cursor.executeUpdate();
                 return rows > 0;
         } catch (SQLException e) {
-            System.out.println("Error saving department: " + e.getMessage());
-            return false;
+e.printStackTrace();            return false;
         }
 
     }
@@ -35,8 +34,7 @@ public class DepartmentDao {
                 }
                 return departments; 
         } catch (SQLException e) {
-            System.out.println("Error fetching departments: " + e.getMessage());
-            return new ArrayList<>();
+e.printStackTrace();            return new ArrayList<>();
         }
            
     }
@@ -52,23 +50,23 @@ public class DepartmentDao {
                 }
             
         } catch (SQLException e) {
-            System.out.print("Error: " +e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
-    public boolean updateDeparment(Department dept, int department_id){
+    public boolean isUpdateDeparment(Department dept){
         String sql = "UPDATE departments SET name = ?, description = ?"+
                       "WHERE department_id = ?";
         try (Connection conn = DatabaseConnection.createConnection();
             PreparedStatement cursor = conn.prepareStatement(sql)) {
                 cursor.setString(1, dept.getName());
                 cursor.setString(2, dept.getDescription());
-                cursor.setInt(3, department_id);
+                cursor.setInt(3, dept.getDepartmentId());
                 int rows = cursor.executeUpdate();
                 return rows > 0;
             
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
 
@@ -82,7 +80,7 @@ public class DepartmentDao {
                 return rows > 0;
             
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
         return false;
     }
@@ -96,12 +94,13 @@ public class DepartmentDao {
                 rs.next();
                 return rs.getInt(1) > 0;
         } catch (Exception e) {
-            System.out.println("Error checking name: " + e.getMessage());
+           e.printStackTrace();
             return false; 
         }  
+        // ??
     }
         
-    public boolean idExistsDeapartment(int department_id){
+    public boolean idExistsDepartment(int department_id){
             String sql = "SELECT COUNT(*) FROM departments WHERE department_id = ?";
             try (Connection conn = DatabaseConnection.createConnection();
             PreparedStatement cursor = conn.prepareStatement(sql)) {
@@ -110,7 +109,7 @@ public class DepartmentDao {
             rs.next();
             return rs.getInt(1) > 0;    
             } catch (SQLException e) {
-             System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
              return false;   
             }
     }

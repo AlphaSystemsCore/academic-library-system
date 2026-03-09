@@ -20,7 +20,7 @@ public class ScoreDao {
             cursor.setFloat(2, score.getCatScore());
             cursor.setFloat(3, score.getExamScore());
             cursor.setFloat(4, score.getTotalScore());
-            cursor.setString(5, String.valueOf(score.getLetterGrade())); // char → String for CHAR(1)
+            cursor.setString(5, String.valueOf(score.getLetterGrade())); // converting >>> String for CHAR(1)
             cursor.setFloat(6, score.getGradePoint());
             cursor.setInt(7, score.getAcademicYear());
             cursor.setInt(8, score.getSubmittedBy());

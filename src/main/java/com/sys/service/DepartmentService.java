@@ -21,16 +21,15 @@ public class DepartmentService {
 
         Department department = new Department(name, description);
         boolean saved = departmentDao.saveDepartment(department);
-        if (saved)
-            System.out.println("Department added: " + name);
-        else
-            System.out.println("Faileed to add department");
+        if (!saved)
+            throw new IllegalArgumentException("Failed to save, please try again");
+        
     }
 
     public List<Department> getAllDepartments(){
         List<Department> departments = departmentDao.findAllDepartments();
         if(departments.isEmpty())
-            System.out.print("No departments found.");
+            throw new IllegalArgumentException("Department not found");
 
         return departments;
     }
@@ -54,30 +53,28 @@ public class DepartmentService {
     if(newDescription == null || newDescription.isBlank())
         throw new IllegalArgumentException("New Description can not be empty");
     
-    if(!departmentDao.idExistsDeapartment(departmentId))
+    if(!departmentDao.idExistsDepartment(departmentId))
         throw new IllegalArgumentException("The department not found: " + departmentId);
 
     
     if(departmentDao.nameExistsDepartment(newName))
         throw new IllegalArgumentException("Name already taken: " + newName);
 
-    Department department = new Department(newName, newDescription);
-    boolean success = departmentDao.updateDeparment(department, departmentId);
+    Department department = new Department(departmentId,newName, newDescription);
+    boolean success = departmentDao.isUpdateDeparment(department);
     
-    if (success)
-        System.out.println("Deaprtment updated successfully");
-    else
-        System.out.println("Failed to update  department");
+    if (!success)
+        throw new IllegalArgumentException("Failed to update please try again.");
     }
 
     public void deleteDepartment(int departmentId){
-        if(!departmentDao.idExistsDeapartment(departmentId))
+        if(!departmentDao.idExistsDepartment(departmentId))
             throw new IllegalArgumentException("Deparment not found:" + departmentId);
 
         boolean deleted = departmentDao.deleteDepartment(departmentId);
-        if(deleted)
-            System.out.println("department deleted successfully");
-        else
-            System.out.println("Failed to delete department");
+        if(!deleted)
+            throw new RuntimeException("Failed to delete, please try agian");
+        
+         
     }
 }

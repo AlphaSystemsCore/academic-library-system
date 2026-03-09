@@ -76,7 +76,7 @@ public class ProgrammeDao {
         return null;
     }
 
-    public boolean updateProgramme(Programme programme) {
+    public boolean isUpdateProgramme(Programme programme) {
         String sql = "UPDATE programmes SET name = ?, code = ?, level = ?, " +
                      "duration_years = ?, department_id = ? " +
                      "WHERE programme_id = ?";

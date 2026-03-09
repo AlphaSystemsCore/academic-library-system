@@ -186,4 +186,22 @@ public class CourseDao {
         }
         return false;
     }
+
+
+    public boolean hasProgramme(int programmeId){
+        String sql = "SELECT COUNT(*) FROM courses WHERE programme_id = ? ";
+        try (Connection conn = DatabaseConnection.createConnection();
+            PreparedStatement cursor = conn.prepareStatement(sql)) {
+                cursor.setInt(1, programmeId);
+                ResultSet rs = cursor.executeQuery();
+                if(rs.next() )
+                    return rs.getInt(1) > 0;
+
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
+
