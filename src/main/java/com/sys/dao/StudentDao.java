@@ -1,5 +1,6 @@
 package com.sys.dao;
 
+
 import com.sys.model.Student;
 import com.sys.utilities.DatabaseConnection;
 import java.sql.*;
@@ -252,6 +253,7 @@ public class StudentDao {
         }
         return 0;
     }
+    
     public boolean hasStudentProgramme(int programmeId){
         String sql = " SELECT COUNT(*) FROM students WHERE programme_id = ? ";
         try (Connection conn = DatabaseConnection.createConnection();
