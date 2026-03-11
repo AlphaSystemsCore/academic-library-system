@@ -9,9 +9,5 @@ public class FineService {
     public void getByBorrpwingIdFine(){}
     public void updateMarkFineAsPaid(){}
     public void deleteFine(){}
-    
 
-
-
-    
 }

@@ -269,7 +269,20 @@ public class StudentDao {
         }
         return false;
     }
+    
+    public boolean existsPhoneNumber(String phoneNumber){
+        String sql = "SELECT COUNT(*) FROM students WHERE phone_number = ?";
+        try (Connection conn = DatabaseConnection.createConnection();
+            PreparedStatement cursor = conn.prepareStatement(sql)) {
+                cursor.setString(1, phoneNumber);
+                ResultSet rs = cursor.executeQuery();
+                return rs.getInt(1) > 0 ;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
     private Student mapRow(ResultSet rs) throws SQLException {
         return new Student(
             rs.getInt("student_id"),
