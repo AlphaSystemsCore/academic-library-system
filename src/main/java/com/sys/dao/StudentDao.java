@@ -200,13 +200,13 @@ public class StudentDao {
         return false;
     }
 
-    public boolean idNoExistsStudent(String idNo) {
+    public boolean idNoExistsStudent(String studentId) {
         String sql = "SELECT COUNT(*) FROM students WHERE ID_NO = ?";
 
         try (Connection conn = DatabaseConnection.createConnection();
              PreparedStatement cursor = conn.prepareStatement(sql)) {
 
-            cursor.setString(1, idNo);
+            cursor.setString(1, studentId);
             ResultSet rs = cursor.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1) > 0;

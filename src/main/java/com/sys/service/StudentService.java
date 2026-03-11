@@ -145,8 +145,17 @@ public class StudentService {
 
                     
     // }
-    public void deleteStudent(){
+    public void deleteStudent(int studentId){
         // check for any relatioship 
+        if(studentId <0)
+            throw new IllegalArgumentException("Student id must be a positive number.");
+        if(!studentDao.idExistsStudent(studentId))
+            throw new IllegalArgumentException("Student id not found.");
+        // continue from here
+        boolean delete = studentDao.deleteStudent(studentId);
+        // if(!delete)
+        //     throw new IllegalArgumentException()
+
     }
 
     
