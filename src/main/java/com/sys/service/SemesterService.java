@@ -4,7 +4,7 @@ import com.sys.dao.SemesterDao;
 import com.sys.dao.EnrollmentDao;
 import java.util.List;
 
-public class semesterService {
+public class SemesterService {
     SemesterDao semesterDao = new SemesterDao();
     public void addSemester(){
 
