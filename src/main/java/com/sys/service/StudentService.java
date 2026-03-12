@@ -153,8 +153,8 @@ public class StudentService {
             throw new IllegalArgumentException("Student id not found.");
         // continue from here
         boolean delete = studentDao.deleteStudent(studentId);
-        // if(!delete)
-        //     throw new IllegalArgumentException()
+        if(!delete)
+            throw new IllegalArgumentException("NOt deleted please try again.");
 
     }
 
