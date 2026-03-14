@@ -23,7 +23,7 @@ public class Borrowing {
     private String bookIsbn;
 
     public static final int BORROW_PERIOD_DAYS = 14;
-    public static final float FINE_PER_DAY = 5.00f; // ksh 5 per day
+    public static final float FINE_PER_DAY = 5.00f; // ksh 5 per day , i put it to ksh. 10 per 
 
     public enum StatusEnum {
         BORROWED, RETURNED, OVERDUE

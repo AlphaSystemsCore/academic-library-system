@@ -49,7 +49,9 @@ public class Book {
         this.availableCopies = availableCopies;
     }
 
-    public boolean isAvailable()    { return availableCopies > 0; }
+    public boolean isAvailable()    {
+         return availableCopies > 0; 
+    }
 
     public void borrowCopy() {
         if (availableCopies <= 0)

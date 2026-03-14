@@ -141,21 +141,22 @@ public class BookDao {
         return null;
     }
 
-    public boolean updateBook(Book book) {
+    public boolean updateBook(int bookId, String isbn, String title, String author,
+                           String publisher, int publishedYear, String category, int totalCopies){
         String sql = "UPDATE books SET isbn = ?, title = ?, author = ?, publisher = ?, " +
                      "published_year = ?, category = ?, total_copies = ? WHERE book_id = ?";
 
         try (Connection conn = DatabaseConnection.createConnection();
              PreparedStatement cursor = conn.prepareStatement(sql)) {
 
-            cursor.setString(1, book.getIsbn());
-            cursor.setString(2, book.getTitle());
-            cursor.setString(3, book.getAuthor());
-            cursor.setString(4, book.getPublisher());
-            cursor.setInt(5, book.getPublishedYear());
-            cursor.setString(6, book.getCategory());
-            cursor.setInt(7, book.getTotalCopies());
-            cursor.setInt(8, book.getBookId());
+            cursor.setString(1, isbn);
+            cursor.setString(2, title);
+            cursor.setString(3, author);
+            cursor.setString(4, publisher);
+            cursor.setInt(5, publishedYear);
+            cursor.setString(6, category);
+            cursor.setInt(7, totalCopies);
+            cursor.setInt(8, bookId);
 
             int rows = cursor.executeUpdate();
             return rows > 0;

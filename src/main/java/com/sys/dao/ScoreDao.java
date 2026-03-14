@@ -3,6 +3,7 @@ package com.sys.dao;
 import com.sys.model.Score;
 import com.sys.utilities.DatabaseConnection;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,7 +149,7 @@ public class ScoreDao {
     }
 
     // Lecturer updates a score they already submitted
-    public boolean updateScore(Score score) {
+    public boolean updateScore(int scoreId, float catScore,float totalScore, float examScore, char letterGrade, float gradePoint, LocalDate submittedDate, int submittedBy) {
         String sql = "UPDATE scores SET cat_score = ?, exam_score = ?, total_score = ?, " +
                      "letter_grade = ?, grade_point = ?, submitted_by = ?, submitted_date = ? " +
                      "WHERE score_id = ?";
@@ -156,14 +157,14 @@ public class ScoreDao {
         try (Connection conn = DatabaseConnection.createConnection();
              PreparedStatement cursor = conn.prepareStatement(sql)) {
 
-            cursor.setFloat(1, score.getCatScore());
-            cursor.setFloat(2, score.getExamScore());
-            cursor.setFloat(3, score.getTotalScore());
-            cursor.setString(4, String.valueOf(score.getLetterGrade()));
-            cursor.setFloat(5, score.getGradePoint());
-            cursor.setInt(6, score.getSubmittedBy());
-            cursor.setDate(7, Date.valueOf(score.getSubmittedDate()));
-            cursor.setInt(8, score.getScoreId());
+            cursor.setFloat(1, catScore);
+            cursor.setFloat(2, examScore);
+            cursor.setFloat(3, totalScore);
+            cursor.setString(4, String.valueOf(letterGrade));
+            cursor.setFloat(5, gradePoint);
+            cursor.setInt(6, submittedBy);
+            cursor.setDate(7, Date.valueOf(submittedDate));
+            cursor.setInt(8, scoreId);
 
             int rows = cursor.executeUpdate();
             return rows > 0;

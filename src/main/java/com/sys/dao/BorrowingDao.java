@@ -166,6 +166,7 @@ public class BorrowingDao {
     }
 
     // Mark all overdue borrowings — run daily but I will put it on login
+    // ?? i can automate this
     public boolean markOverdueBorrowings() {
         String sql = "UPDATE borrowings SET status = 'OVERDUE' " +
                      "WHERE status = 'BORROWED' AND due_date < CURDATE()";

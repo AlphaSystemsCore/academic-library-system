@@ -121,7 +121,9 @@ public class LecturerDao {
         return null;
     }
 
-    public boolean updateLecturer(Lecturer lecturer) {
+    public boolean updateLecturer(int lecturerId, String firstName, String lastName,
+                               String email, String title, String identificationNumber,
+                               String phoneNumber, String staffNumber, int departmentId) {
         String sql = "UPDATE lecturers SET first_name = ?, last_name = ?, email = ?, " +
                      "title = ?, ID_NO = ?, phone_number = ?, staff_number = ?, " +
                      "department_id = ? WHERE lecturer_id = ?";
@@ -129,15 +131,15 @@ public class LecturerDao {
         try (Connection conn = DatabaseConnection.createConnection();
              PreparedStatement cursor = conn.prepareStatement(sql)) {
 
-            cursor.setString(1, lecturer.getFirstName());
-            cursor.setString(2, lecturer.getLastName());
-            cursor.setString(3, lecturer.getEmail());
-            cursor.setString(4, lecturer.getTitle());
-            cursor.setString(5, lecturer.getIdentificationNumber());
-            cursor.setString(6, lecturer.getPhoneNumber());
-            cursor.setString(7, lecturer.getStaffNumber());
-            cursor.setInt(8, lecturer.getDepartmentId());
-            cursor.setInt(9, lecturer.getLecturerId());
+            cursor.setString(1, firstName);
+            cursor.setString(2, lastName);
+            cursor.setString(3, email);
+            cursor.setString(4, title);
+            cursor.setString(5, identificationNumber);
+            cursor.setString(6, phoneNumber);
+            cursor.setString(7, staffNumber);
+            cursor.setInt(8, departmentId);
+            cursor.setInt(9, lecturerId);
 
             int rows = cursor.executeUpdate();
             return rows > 0;

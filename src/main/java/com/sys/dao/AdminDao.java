@@ -59,7 +59,7 @@ public class AdminDao {
         }
     }
 
-    public Admin findAdminById(int adminId) {
+    public Admin findAdminById(int adminId) { 
         String sql = "SELECT * FROM admins WHERE admin_id = ?";
 
         try (Connection conn = DatabaseConnection.createConnection();
@@ -97,19 +97,20 @@ public class AdminDao {
         return null;
     }
 
-    public boolean updateAdmin(Admin admin) {
+    public boolean updateAdmin(int adminId, String firstName, String lastName, String email,
+                            String identificationNumber, String phoneNumber) {
         String sql = "UPDATE admins SET first_name = ?, last_name = ?, email = ?, " +
                      "identification_number = ?, phone_number = ? WHERE admin_id = ?";
 
         try (Connection conn = DatabaseConnection.createConnection();
              PreparedStatement cursor = conn.prepareStatement(sql)) {
 
-            cursor.setString(1, admin.getFirstName());
-            cursor.setString(2, admin.getLastName());
-            cursor.setString(3, admin.getEmail());
-            cursor.setString(4, admin.getIdentificationNumber());
-            cursor.setString(5, admin.getPhoneNumber());
-            cursor.setInt(6, admin.getAdminId());
+            cursor.setString(1, firstName);
+            cursor.setString(2, lastName);
+            cursor.setString(3, email);
+            cursor.setString(4, identificationNumber);
+            cursor.setString(5, phoneNumber);
+            cursor.setInt(6, adminId);
 
             int rows = cursor.executeUpdate();
             return rows > 0;

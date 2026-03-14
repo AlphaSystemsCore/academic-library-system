@@ -1,80 +1,72 @@
 package com.sys.service;
 
-import com.sys.model.Department;
-import com.sys.dao.DepartmentDao;
-
-import java.util.ArrayList;
 import java.util.List;
+import com.sys.dao.DepartmentDao;
+import com.sys.model.Department;
 
 public class DepartmentService {
-    private DepartmentDao departmentDao = new DepartmentDao();
 
-    public void addDepartment(String name, String description){
+    private final DepartmentDao departmentDao = new DepartmentDao();
+
+    public void addDepartment(String name, String description) { //frontend parameters
         if (name == null || name.isBlank())
-            throw new IllegalArgumentException("Department name cannot be empy");
-        if(description == null || description.isBlank())
-            throw new IllegalArgumentException("descritption cannot be emplty");
-        if(name.length() > 100)
-            throw new IllegalArgumentException("Name too long - max 100 characters");
-        if(departmentDao.nameExistsDepartment(name))
-            throw new IllegalArgumentException("Departmant name already exists" + name);
+            throw new IllegalArgumentException("Department name cannot be blank.");
+        if (description == null || description.isBlank())
+            throw new IllegalArgumentException("Description cannot be blank.");
+        if (departmentDao.nameExistsDepartment(name))
+            throw new IllegalArgumentException("A department with this name already exists.");
 
-        Department department = new Department(name, description);
-        boolean saved = departmentDao.saveDepartment(department);
+        Department dept = new Department(name, description);
+        boolean saved = departmentDao.saveDepartment(dept);
         if (!saved)
-            throw new IllegalArgumentException("Failed to save, please try again");
-        
+            throw new RuntimeException("Failed to save department. Please try again.");
     }
 
-    public List<Department> getAllDepartments(){
+    public List<Department> getAllDepartments() {
         List<Department> departments = departmentDao.findAllDepartments();
-        if(departments.isEmpty())
-            throw new IllegalArgumentException("Department not found");
-
+        if (departments.isEmpty())
+            throw new IllegalStateException("No departments found.");
         return departments;
     }
 
-    public Department getDepartmentById(int departmentId){
-        if(departmentId <=0)
-            throw new IllegalArgumentException("Invalid department ID");
-
-        Department department = departmentDao.findByIdDepartment(departmentId);
-
-        if(department == null)
-            throw new IllegalArgumentException("Department not fouind with ID " + departmentId );
-
-        return department;
+    public Department getDepartmentById(int departmentId) {  //frontend parameters
+        if (departmentId < 1)
+            throw new IllegalArgumentException("Department ID must be a positive number.");
+        Department dept = departmentDao.findByIdDepartment(departmentId);
+        if (dept == null)
+            throw new IllegalStateException("Department not found for ID: " + departmentId);
+        return dept;
     }
 
-    public void updateDeparment(int departmentId, String newName, String newDescription){
-    if(newName == null || newName.isBlank())
-        throw new IllegalArgumentException("New name can not be empty") ;
+    public void updateDepartment(int departmentId, String name, String description) {  //frontend parameters
+        if (departmentId < 1)
+            throw new IllegalArgumentException("Department ID must be a positive number.");
+        if (!departmentDao.idExistsDepartment(departmentId))
+            throw new IllegalArgumentException("Department not found.");
+        if (name == null || name.isBlank())
+            throw new IllegalArgumentException("Department name cannot be blank.");
+        if (description == null || description.isBlank())
+            throw new IllegalArgumentException("Description cannot be blank.");
 
-    if(newDescription == null || newDescription.isBlank())
-        throw new IllegalArgumentException("New Description can not be empty");
-    
-    if(!departmentDao.idExistsDepartment(departmentId))
-        throw new IllegalArgumentException("The department not found: " + departmentId);
+        Department dept = departmentDao.findByIdDepartment(departmentId);
+        if (!dept.getName().equals(name) && departmentDao.nameExistsDepartment(name))
+            throw new IllegalArgumentException("A department with this name already exists.");
 
-    
-    if(departmentDao.nameExistsDepartment(newName))
-        throw new IllegalArgumentException("Name already taken: " + newName);
+        dept.setName(name);
+        dept.setDescription(description);
 
-    Department department = new Department(departmentId,newName, newDescription);
-    boolean success = departmentDao.isUpdateDeparment(department);
-    
-    if (!success)
-        throw new IllegalArgumentException("Failed to update please try again.");
+        boolean updated = departmentDao.isUpdateDeparment(dept);
+        if (!updated)
+            throw new RuntimeException("Failed to update department. Please try again.");
     }
 
-    public void deleteDepartment(int departmentId){
-        if(!departmentDao.idExistsDepartment(departmentId))
-            throw new IllegalArgumentException("Deparment not found:" + departmentId);
-
+    public void deleteDepartment(int departmentId) {  //frontend parameters
+        if (departmentId < 1)
+            throw new IllegalArgumentException("Department ID must be a positive number.");
+        if (!departmentDao.idExistsDepartment(departmentId))
+            throw new IllegalArgumentException("Department not found.");
         boolean deleted = departmentDao.deleteDepartment(departmentId);
-        if(!deleted)
-            throw new RuntimeException("Failed to delete, please try agian");
-        
-         
+        if (!deleted)
+            throw new RuntimeException("Failed to delete department. Please try again.");
     }
 }

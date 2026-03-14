@@ -3,7 +3,7 @@ package com.sys.model;
 import java.time.LocalDate;
 
 /**
- * One student can have multiple enrollments (one per course per semester).
+ * One student can have multiple enrollments one per course per semester.
  * Max 5 enrollments per student per semester — enforced in EnrollmentService.
  *
  * 
@@ -23,7 +23,7 @@ public class Enrollment {
     private boolean isActive;
     private LocalDate enrolledDate;
 
-    //Optional: populated by JOIN queries for display
+    //populated by JOIN queries for display
     private String studentName;
     private String admissionNumber;
     private String courseTitle;

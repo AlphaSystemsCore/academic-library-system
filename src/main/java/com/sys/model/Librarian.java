@@ -33,4 +33,7 @@ public class Librarian extends Person {
     { this.librarianId = librarianId; 
 
     }
+    public void setStaffNumber(String staffNumber){
+        this.staffNumber = staffNumber;
+    }
 }

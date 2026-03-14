@@ -113,18 +113,19 @@ public class CourseDao {
         return null;
     }
 
-    public boolean updateCourse(Course course) {
+    public boolean updateCourse(int courseId, String courseCode, String title,
+                             int creditHours, int programmeId) {
         String sql = "UPDATE courses SET course_code = ?, title = ?, credit_hours = ?, " +
                      "programme_id = ? WHERE course_id = ?";
 
         try (Connection conn = DatabaseConnection.createConnection();
              PreparedStatement cursor = conn.prepareStatement(sql)) {
 
-            cursor.setString(1, course.getCourseCode());
-            cursor.setString(2, course.getTitle());
-            cursor.setInt(3, course.getCreditHours());
-            cursor.setInt(4, course.getProgrammeId());
-            cursor.setInt(5, course.getCourseId());
+            cursor.setString(1, courseCode);
+            cursor.setString(2, title);
+            cursor.setInt(3, creditHours);
+            cursor.setInt(4, programmeId);
+            cursor.setInt(5, courseId);
 
             int rows = cursor.executeUpdate();
             return rows > 0;
